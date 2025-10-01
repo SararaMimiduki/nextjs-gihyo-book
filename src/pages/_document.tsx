@@ -9,29 +9,28 @@ import Document, {
   NextScript,
   type DocumentContext,
   type DocumentInitialProps,
-} from 'next/document';
-import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
+} from 'next/document'
+import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
 
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
-    const sheet = new ServerStyleSheet();
-    const originalRenderPage = ctx.renderPage;
+  static async getInitialProps(
+    ctx: DocumentContext,
+  ): Promise<DocumentInitialProps> {
+    const sheet = new ServerStyleSheet()
+    const originalRenderPage = ctx.renderPage
 
     try {
       // App 全体を StyleSheetManager で包み、サーバー側でスタイルを収集
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp:
-            (App) =>
-            (props) =>
-              (
-                <StyleSheetManager sheet={sheet.instance}>
-                  <App {...props} />
-                </StyleSheetManager>
-              ),
-        });
+          enhanceApp: (App) => (props) => (
+            <StyleSheetManager sheet={sheet.instance}>
+              <App {...props} />
+            </StyleSheetManager>
+          ),
+        })
 
-      const initialProps = await Document.getInitialProps(ctx);
+      const initialProps = await Document.getInitialProps(ctx)
 
       // 収集したスタイルを <Head> 内へ差し込む
       return {
@@ -42,9 +41,9 @@ export default class MyDocument extends Document {
             {sheet.getStyleElement()}
           </>
         ),
-      };
+      }
     } finally {
-      sheet.seal();
+      sheet.seal()
     }
   }
 
@@ -57,7 +56,6 @@ export default class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }
-
