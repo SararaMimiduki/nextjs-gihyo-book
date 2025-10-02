@@ -1,7 +1,9 @@
 // pages/_app.tsx
-import type { AppProps } from 'next/app';
-import Head from 'next/head';
-import { GlobalStyle } from '@/styles/global-style';
+import Head from 'next/head'
+
+import { GlobalStyle } from '@/styles/global-style'
+
+import type { AppProps } from 'next/app'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   // pages ルーターではこれだけで SSR されたスタイルがそのまま当たります
@@ -20,5 +22,5 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <GlobalStyle />
       <Component {...pageProps} />
     </>
-  );
+  )
 }

@@ -9,7 +9,7 @@ module.exports = {
     'jsx-a11y',
     'import',
     'prettier',
-    '@next/next',
+    '@next/next'
   ],
   extends: [
     'eslint:recommended',
@@ -20,20 +20,23 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:import/typescript',
     'next/core-web-vitals',
-    'plugin:prettier/recommended', // ← Prettier連携（推奨）
+    'plugin:prettier/recommended',
+    'plugin:storybook/recommended'
   ],
   settings: {
     react: { version: 'detect' },
     'import/resolver': {
       node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
-      typescript: {}, // ← '@/...' エイリアス使用時は有効化
-    },
+      typescript: {
+        project: ['./tsconfig.json', './.storybook/tsconfig.json']
+      } // ← '@/...' エイリアス使用時は有効化
+    }
   },
   ignorePatterns: ['node_modules/', '.next/', 'dist/', '.turbo/', 'coverage/'],
   rules: {
     // 独自ルールと既存ルールを統合
     'react/react-in-jsx-scope': 'off',
-    
+
     'import/order': [
       2,
       {
@@ -45,21 +48,21 @@ module.exports = {
           'internal',
           ['parent', 'sibling', 'index'],
           'object',
-          'type',
-        ],
-      },
+          'type'
+        ]
+      }
     ],
     'prettier/prettier': [
       'error',
       {
-        trailingComma: 'all',
+        trailingComma: 'none',
         endOfLine: 'lf',
         semi: false,
         singleQuote: true,
         printWidth: 80,
-        tabWidth: 2,
-      },
+        tabWidth: 2
+      }
     ],
-    'react/prop-types': 'off',
-  },
-};
+    'react/prop-types': 'off'
+  }
+}
