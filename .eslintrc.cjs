@@ -63,6 +63,12 @@ module.exports = {
         tabWidth: 2
       }
     ],
-    'react/prop-types': 'off'
+    'react/prop-types': 'off',
+    '@typescript-eslint/no-empty-object-type': [
+      'error',
+      {
+        allowInterfaces: 'withSingleExtends'
+      }
+    ]
   }
 }

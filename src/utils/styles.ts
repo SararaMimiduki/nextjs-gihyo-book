@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { theme } from '@/themes' // プロジェクトのテーマ定義をインポート
 
 // ================== Theme 型の定義 ==================
