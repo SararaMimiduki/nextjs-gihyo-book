@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-// eslint-disable-next-line import/no-named-as-default
+ 
 import styled from 'styled-components'
 
 import { toPropValue, Color, Space, AppTheme } from '@/utils/styles'

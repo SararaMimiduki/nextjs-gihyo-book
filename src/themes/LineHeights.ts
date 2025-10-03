@@ -18,3 +18,10 @@ export const lineHeights = [
   '37px',
   '43px'
 ] as const satisfies readonly LineHeights[]
+
+type TestStyle =
+  | 'あいうえお'
+  | 'かきくけこ'
+  | 'さしすせそ'
+  | 'たちつてと'
+  | 'は皮膚へほ'

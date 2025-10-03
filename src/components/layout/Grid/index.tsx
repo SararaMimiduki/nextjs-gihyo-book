@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import styled from 'styled-components'
 
 // Box はベースとなるレイアウト用コンポーネント
@@ -6,15 +5,15 @@ import styled from 'styled-components'
 import Box, { BoxProps } from 'components/layout/Box'
 
 // Grid 専用で扱いたい CSS プロパティの型を import
+import { toPropValue } from 'utils/styles'
+
 import type {
   CSSPropertyGridArea,
   CSSPropertyGridAutoFlow,
   CSSPropertyGridColumn,
   CSSPropertyGridRow,
-  Responsive,
+  Responsive
 } from 'types/styles'
-
-import { toPropValue } from 'utils/styles'
 
 /**
  * ==========================
@@ -26,18 +25,18 @@ import { toPropValue } from 'utils/styles'
  * { base: value, md: value } のようなレスポンシブ指定も可能
  */
 type GridProps = BoxProps & {
-  gridGap?: Responsive<string>                          // grid-gap: グリッド全体の隙間
-  gridColumnGap?: Responsive<string>                    // grid-column-gap: 列間の隙間
-  gridRowGap?: Responsive<string>                       // grid-row-gap: 行間の隙間
-  gridColumn?: Responsive<CSSPropertyGridColumn>        // grid-column: セルの列位置
-  gridRow?: Responsive<CSSPropertyGridRow>              // grid-row: セルの行位置
-  gridAutoFlow?: Responsive<CSSPropertyGridAutoFlow>    // grid-auto-flow: アイテムの自動配置ルール
-  gridAutoColumns?: Responsive<string>                  // grid-auto-columns: 暗黙的に生成される列のサイズ
-  gridAutoRows?: Responsive<string>                     // grid-auto-rows: 暗黙的に生成される行のサイズ
-  gridTemplateColumns?: Responsive<string>              // grid-template-columns: 列の定義
-  gridTemplateRows?: Responsive<string>                 // grid-template-rows: 行の定義
-  gridTemplateAreas?: Responsive<CSSPropertyGridArea>   // grid-template-areas: 名前付きエリアレイアウト
-  gridArea?: Responsive<string>                         // grid-area: アイテムをエリアに配置
+  gridGap?: Responsive<string> // grid-gap: グリッド全体の隙間
+  gridColumnGap?: Responsive<string> // grid-column-gap: 列間の隙間
+  gridRowGap?: Responsive<string> // grid-row-gap: 行間の隙間
+  gridColumn?: Responsive<CSSPropertyGridColumn> // grid-column: セルの列位置
+  gridRow?: Responsive<CSSPropertyGridRow> // grid-row: セルの行位置
+  gridAutoFlow?: Responsive<CSSPropertyGridAutoFlow> // grid-auto-flow: アイテムの自動配置ルール
+  gridAutoColumns?: Responsive<string> // grid-auto-columns: 暗黙的に生成される列のサイズ
+  gridAutoRows?: Responsive<string> // grid-auto-rows: 暗黙的に生成される行のサイズ
+  gridTemplateColumns?: Responsive<string> // grid-template-columns: 列の定義
+  gridTemplateRows?: Responsive<string> // grid-template-rows: 行の定義
+  gridTemplateAreas?: Responsive<CSSPropertyGridArea> // grid-template-areas: 名前付きエリアレイアウト
+  gridArea?: Responsive<string> // grid-area: アイテムをエリアに配置
 }
 
 /**
@@ -55,17 +54,25 @@ const Grid = styled(Box)<GridProps>`
   ${(props) => toPropValue('grid-row', props.gridRow, props.theme)}
   ${(props) => toPropValue('grid-column', props.gridColumn, props.theme)}
   ${(props) => toPropValue('grid-auto-flow', props.gridAutoFlow, props.theme)}
-  ${(props) => toPropValue('grid-auto-columns', props.gridAutoColumns, props.theme)}
+  ${(props) =>
+    toPropValue('grid-auto-columns', props.gridAutoColumns, props.theme)}
   ${(props) => toPropValue('grid-auto-rows', props.gridAutoRows, props.theme)}
-  ${(props) => toPropValue('grid-template-columns', props.gridTemplateColumns, props.theme)}
-  ${(props) => toPropValue('grid-template-rows', props.gridTemplateRows, props.theme)}
-  ${(props) => toPropValue('grid-template-areas', props.gridTemplateAreas, props.theme)}
+  ${(props) =>
+    toPropValue(
+      'grid-template-columns',
+      props.gridTemplateColumns,
+      props.theme
+    )}
+  ${(props) =>
+    toPropValue('grid-template-rows', props.gridTemplateRows, props.theme)}
+  ${(props) =>
+    toPropValue('grid-template-areas', props.gridTemplateAreas, props.theme)}
   ${(props) => toPropValue('grid-area', props.gridArea, props.theme)}
 `
 
 // デフォルトで display: grid に設定
 Grid.defaultProps = {
-  display: 'grid',
+  display: 'grid'
 }
 
 export default Grid
